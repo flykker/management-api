@@ -1,11 +1,12 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException
 from lib.main import get_token_header
 from fastapi import Depends
 from app.main import app
+from starlette.staticfiles import StaticFiles
 
 router = APIRouter()
 
-@router.get("/")
+@router.get("s")
 async def read_items():
     return [{"name": "Item Foo"}, {"name": "item Bar"}]
 
@@ -29,3 +30,4 @@ app.include_router(
     dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not found"}},
 )
+app.mount("/modules/website", StaticFiles(directory="modules/website/static"), name="static")
