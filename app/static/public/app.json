@@ -1,0 +1,6 @@
+{
+  "plugins": [
+    ["/", "Dashboard", "DashboardIcon"],
+    ["/modules/websites", "Websites", "GearIcon"]
+  ]
+}

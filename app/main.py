@@ -8,6 +8,8 @@ from starlette.staticfiles import StaticFiles
 app = FastAPI()
 
 app.include_router(users.router)
-app.mount("/", StaticFiles(directory="app/static"), name="static")
-
 register()
+
+app.mount("/", StaticFiles(directory="app/static/build",
+                           html=True), name="home")
+app.mount("/static", StaticFiles(directory="app/static/build/static"), name="static")

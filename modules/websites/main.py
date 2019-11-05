@@ -6,6 +6,7 @@ from starlette.staticfiles import StaticFiles
 
 router = APIRouter()
 
+
 @router.get("s")
 async def read_items():
     return [{"name": "Item Foo"}, {"name": "item Bar"}]
@@ -19,7 +20,8 @@ async def read_item(item_id: str):
 @router.put("/{item_id}")
 async def update_item(item_id: str):
     if item_id != "foo":
-        raise HTTPException(status_code=403, detail="You can only update the item: foo")
+        raise HTTPException(
+            status_code=403, detail="You can only update the item: foo")
     return {"item_id": item_id, "name": "The Fighters"}
 
 
@@ -30,4 +32,5 @@ app.include_router(
     dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not found"}},
 )
-app.mount("/modules/website", StaticFiles(directory="modules/website/static"), name="static")
+app.mount("/modules/websites",
+          StaticFiles(directory="modules/websites/static/umd"), name="websites")
