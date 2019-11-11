@@ -1,35 +1,57 @@
+from pydantic import BaseModel
 from fastapi import FastAPI, APIRouter, HTTPException
 from lib.main import get_token_header
 from fastapi import Depends
 from app.main import app
 from starlette.staticfiles import StaticFiles
+from lib.db import db as orm
+from tinydb import Query
 
 router = APIRouter()
 
 
-@router.get("s")
-async def read_items():
-    return [{"name": "Item Foo"}, {"name": "item Bar"}]
+class Website(BaseModel):
+    username: str
+    name: str
+    home_path: str
+    domain: str
 
 
-@router.get("/{item_id}")
-async def read_item(item_id: str):
-    return {"name": "Fake Specific Item", "item_id": item_id}
+@router.get("")
+async def read_websites():
+    user = Query()
+    els = orm.query("websites").search(user.username == "user")
+    for el in els:
+        el.update(id=el.doc_id)
+    return els
 
 
-@router.put("/{item_id}")
-async def update_item(item_id: str):
-    if item_id != "foo":
-        raise HTTPException(
-            status_code=403, detail="You can only update the item: foo")
-    return {"item_id": item_id, "name": "The Fighters"}
+@router.get("/{website_id}")
+async def read_website(website_id: str):
+    user = Query()
+    el = orm.query("websites").get(doc_id=website_id)
+    el.update(id=el.doc_id)
+    return el
+
+
+@router.post("/edit/{website_id}")
+async def update_website(website_id: int, website: Website):
+    print(website.json())
+    el = Query()
+    if (orm.query("websites").get(doc_id=website_id)):
+        print("update")
+        result = orm.query("websites").update(website, doc_ids=[website_id])
+    else:
+        print("insert")
+        result = orm.query("websites").insert(website)
+    return result
 
 
 app.include_router(
     router,
-    prefix="/items",
-    tags=["items"],
-    dependencies=[Depends(get_token_header)],
+    prefix="/websites",
+    tags=["Websites"],
+    # dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not found"}},
 )
 app.mount("/modules/websites",

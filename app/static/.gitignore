@@ -1,16 +1,10 @@
-# dependency cache
-node_modules
-
-# build
-static/bundle.js
-build/
-
-# logs
-npm-debug.log
-
-# editor config
+.DS_Store
+Thumbs.db
 .idea
-*.iml
-
-# OS files
-*.DS_Store
+node_modules
+app/bower_components
+_backups
+.sass-cache
+app/assets/css/materialism.css
+app/assets/css/materialism.css.map
+.tmp

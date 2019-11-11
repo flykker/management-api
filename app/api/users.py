@@ -1,18 +1,16 @@
 from fastapi import APIRouter
+from lib.db import db as orm
+from tinydb import Query
 
 router = APIRouter()
 
 
-@router.get("/users", tags=["users"])
+@router.get("/users", tags=["Users"])
 async def read_users():
-    return [{"username": "Foo"}, {"username": "Bar"}]
+    return orm.query("users").all()
 
 
-@router.get("/users/me", tags=["users"])
-async def read_user_me():
-    return {"username": "fakecurrentuser"}
-
-
-@router.get("/users/{username}", tags=["users"])
+@router.get("/users/{username}", tags=["Users"])
 async def read_user(username: str):
-    return {"username": username}
+    user = Query()
+    return orm.query("users").get(user.username == username)

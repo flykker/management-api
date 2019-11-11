@@ -1,53 +1,35 @@
-# Atlaskit starter
+# Materialism
 
-This is a basic app which includes some Atlaskit components, built on top of [create-react-app](https://github.com/facebookincubator/create-react-app). You can use this as a starting point for your next ADG3-themed project.
+### Preview theme
+To preview the theme, place the contents on a webserver and visit **http://webserver/dist/**
 
-A live demo is available at [http://atlaskit-starter.surge.sh/](http://atlaskit-starter.surge.sh/)
+--------------
 
-## Getting started
+For developing based on the theme you want to setup your workflow with the following steps:
 
-Please make sure you have [node](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com/en/docs/install) installed in your system.
-
-Please run the following commands to clone the project, install dependencies and start the application.
-
-```bash
-git clone https://bitbucket.org/atlassian/atlaskit-starter.git   # clone the project
-yarn install  # install dependencies
-yarn start  # start the project
+#### Grunt and Bower
+make sure you have node.js installed (http://nodeguide.com/beginner.html)
+```sh
+$ npm install -g grunt-cli
+$ npm install -g bower
 ```
 
-## Using more Atlaskit components
-
-This repo ships with some of the Atlaskit components such as `@atlaskit/navigation` and `@atlaskit/avatar`.
-
-You can add other components (listed at [https://atlaskit.atlassian.com/](https://atlaskit.atlassian.com/)) to your project. To see an exmaple in order to add button in your project run:
-
-```bash
-yarn add @atlaskit/button
+#### Using grunt and bower
+With bower you can download the needed packages and with npm you need to download the grunt dependencies
+```sh
+$ cd /to/path/where Gruntfile.js and bower.json are located
+$ npm install
+$ bower install
 ```
 
-Then in the relevant React component file (e.g. `src/App.jsx`) do the following:
-
-```js
-import Button from '@atlaskit/button';
-
-// ...
-
-render() {
-  <Page>
-    <Button>My button text</Button>
-  </Page>
-}
+#### Making changes
+You can use the grunt tasks to develop your own application
+To make changes and automatically compile your CSS run:
+```sh
+$ grunt dev
 ```
 
-## Want some help?
-
-This repository is helpful for people using Atlaskit + React for the first time. If you find a bug or require an improvement, please report it:
-
-If you are an Atlassian employee please use this [link](https://ecosystem.atlassian.net/secure/CreateIssue.jspa?pid=24670) to raise the ticket and mention 'Atlaskit-starter' as component in the issue.
-
-If you are an external contributor please click [here](https://bitbucket.org/atlassian/atlaskit-mk-2/issues/new) to raise an issue in atlaskit-mk-2 repository and mention 'Atlaskit-starter' as component in the issue.
-
-## Demo
-
-![Screenshot](https://i.imgur.com/p4N266G.gif)
+When you are done for a distribution of your own version run:
+```sh
+$ grunt
+```
