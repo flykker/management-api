@@ -55,4 +55,4 @@ app.include_router(
     responses={404: {"description": "Not found"}},
 )
 app.mount("/modules/websites",
-          StaticFiles(directory="modules/websites/static/umd"), name="websites")
+          StaticFiles(directory="modules/websites/static"), name="websites")

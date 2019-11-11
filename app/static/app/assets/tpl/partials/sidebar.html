@@ -5,17 +5,7 @@
   
   <ul ng-cloak>
     <a menu-link href="#/dashboard" icon="md md-blur-on">Dashboard</a>
-    <a menu-link href="#/apps/crud" icon="md md-blur-on" name="Crud">Websites</a>
-    <a menu-link href="#/apps/crud" icon="md md-blur-on" name="Crud">Databases</a>
-    <!--li menu-toggle path="/forms" name="Forms" icon="md md-input">
-      <a menu-link href="#/forms/basic">Basic forms</a>
-      <a menu-link href="#/forms/advanced">Advanced elements</a>
-      <a menu-link href="#/forms/validation">Validation</a>
-    </li>
-    <li menu-toggle path="/tables" name="Tables" icon="md md-list">
-      <a menu-link href="#/tables/basic">Basic tables</a>
-      <a menu-link href="#/tables/data">Data tables</a>
-    </li> -->
-    <a menu-link href="#/plugins/demo2" icon="md md-blur-on">Files</a>
+    
+    <a menu-link href="#/modules/{{ module }}" icon="md md-blur-on" name="{{ module|capitalize }}" ng-repeat="module in modules">{{ module|capitalize }}</a>
   </ul>
 </aside>

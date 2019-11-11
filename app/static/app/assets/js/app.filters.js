@@ -9,3 +9,9 @@ app.filter('nospace', function () {
     return (!value) ? '' : value.replace(/ /g, '');
   };
 });
+
+app.filter('capitalize', function() {
+  return function(token) {
+      return _.capitalize(token);
+   }
+});

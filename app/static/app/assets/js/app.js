@@ -20,5 +20,19 @@ var app = angular.module('app', [
   'fsm',                    // sticky header
   'smoothScroll',
   'LocalStorageModule'
-  , 'plugin.website'
 ]);
+
+
+$script('/modules/modules.js','modules', function(){
+  for( var i in modules){
+    module = modules[i];
+    $script('/modules/' + module + '/index.js', module);
+  }
+
+  $script.ready(modules, function(){  
+    angular.element(document).ready(function() {
+      angular.bootstrap(document, ['app', 'websites']);
+    });
+  });
+
+});

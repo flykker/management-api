@@ -2,6 +2,8 @@ app.controller('MainController',
   ['$scope', '$animate', 'localStorageService', '$alert', '$timeout',
   function($scope, $animate, localStorageService, $alert, $timeout){
 
+  $scope.modules = window.modules;
+
   if (typeof(browser_old) == "undefined"){
     initRipplesWithArrive();
 

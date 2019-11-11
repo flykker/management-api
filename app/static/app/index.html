@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app" ng-class="{'full-page-map': isFullPageMap}">
+<html lang="en" ng-class="{'full-page-map': isFullPageMap}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -54,6 +54,15 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <!--[if lt IE 10 ]>
+  <script>
+    // this is why we can't have nice things
+    var browser_old = true;
+  </script>
+  <![endif]-->
+
+  
 </head>
 
 <body ng-controller="MainController" scroll-spy id="top" ng-class="[theme.template, theme.color]">
@@ -64,13 +73,6 @@
       <div class="main-content" autoscroll="true" ng-cloak ng-view bs-affix-target></div>
     </div>
   </main>
-
-  <!--[if lt IE 10 ]>
-  <script>
-    // this is why we can't have nice things
-    var browser_old = true;
-  </script>
-  <![endif]-->
 
   <!-- build:js assets/js/vendors.min.js -->
   <script charset="utf-8" src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -96,7 +98,7 @@
   <script charset="utf-8" src="/bower_components/jquery-hammerjs/jquery.hammer.js"></script>
   <script charset="utf-8" src="/bower_components/velocity/velocity.js"></script>
 
-  <script charset="utf-8" src="/bower_components/lodash/dist/lodash.js"></script>
+  <script charset="utf-8" src="/bower_components/lodash/lodash.js"></script>
 
   <script charset="utf-8" src="/bower_components/arrive/src/arrive.js"></script>
   <script charset="utf-8" src="/bower_components/select2/select2.js"></script>
@@ -110,6 +112,7 @@
   <script charset="utf-8" src="/bower_components/textAngular/dist/textAngular.min.js"></script>
   <!-- endbuild -->
   <!-- build:js assets/js/app.min.js -->
+  <script charset="utf-8" src="assets/js/vendors/script.js"></script>
   <script charset="utf-8" src="assets/js/vendors/angular-placeholders.js"></script>
   <script charset="utf-8" src="assets/js/vendors/side-nav.js"></script>
   <script charset="utf-8" src="assets/js/vendors/ripples.js"></script>
@@ -139,9 +142,7 @@
   <script charset="utf-8" src="assets/js/services/color-service.js"></script>
   <script charset="utf-8" src="assets/js/controllers/main.js"></script>
   <script charset="utf-8" src="assets/js/controllers/dashboard.js"></script>
-  <script charset="utf-8" src="assets/js/controllers/apps/crud.js"></script>
-
-  <script charset="utf-8" src="assets/js/plugin.js"></script>
+    
   <!-- endbuild -->
 </body>
 </html>
