@@ -6,6 +6,7 @@ from app.main import app
 from starlette.staticfiles import StaticFiles
 from lib.db import db as orm
 from tinydb import Query
+import json
 
 router = APIRouter()
 
@@ -34,16 +35,22 @@ async def read_website(website_id: str):
     return el
 
 
-@router.post("/edit/{website_id}")
+@router.post("")
+async def insert_website(website: Website):
+    data = json.loads(website.json())
+    print(data)
+
+    result = orm.query("websites").insert(website)
+    return result
+
+
+@router.put("/edit/{website_id}")
 async def update_website(website_id: int, website: Website):
     print(website.json())
     el = Query()
     if (orm.query("websites").get(doc_id=website_id)):
         print("update")
         result = orm.query("websites").update(website, doc_ids=[website_id])
-    else:
-        print("insert")
-        result = orm.query("websites").insert(website)
     return result
 
 

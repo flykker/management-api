@@ -1,1 +1,14 @@
-{"_default": {}, "users": {"1": {"username": "user"}}, "websites": {"1": {"username": "user", "name": "133", "home_path": "/home/12312312", "domain": "3", "settings": {"php": "7.0"}}}}
+{
+  "_default": {},
+  "users": { "1": { "username": "user" } },
+  "websites": {
+    "1": {
+      "username": "user",
+      "name": "mail.ru",
+      "home_path": "/home/mail2.ru",
+      "domain": "mail.ru",
+      "settings": { "php": "7.0" }
+    },
+    "2": { "username": "q", "name": "q", "home_path": "q", "domain": "q" }
+  }
+}
