@@ -21,7 +21,7 @@ class Website(BaseModel):
 @router.get("")
 async def read_websites():
     user = Query()
-    els = orm.query("websites").search(user.username == "user")
+    els = orm.query("websites").all()
     for el in els:
         el.update(id=el.doc_id)
     return els
@@ -39,8 +39,10 @@ async def read_website(website_id: str):
 async def insert_website(website: Website):
     data = json.loads(website.json())
     print(data)
+    print(type(data))
+    print("Insert")
 
-    result = orm.query("websites").insert(website)
+    result = orm.insert("websites", data)
     return result
 
 
